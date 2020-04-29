@@ -118,7 +118,7 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
 
         Word current = filtered.get(position);
         String text = current.getEnglish() + ": " + current.getKana();
-        if (current.getKanji()!=null){
+        if (!current.getKanji().equals("")){
             text += " ("+ current.getKanji()+ ") ";
         }
         holder.textView.setText(text);
@@ -172,25 +172,25 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
                     if (isKanji(constraint.toString())) {
                         //Search in kanji fields
 
-                            if (a.getKanji().contains(PREFIX) && b.getKanji().contains(PREFIX)) return a.getKanji().compareTo(b.getKanji());
-                            if (a.getKanji().contains(PREFIX) && !b.getKanji().contains(PREFIX)) return -1;
-                            if (!a.getKanji().contains(PREFIX) && b.getKanji().contains(PREFIX)) return 1;
+                            if (a.getKanji().equals(PREFIX) && b.getKanji().equals(PREFIX)) return a.getKanji().compareTo(b.getKanji());
+                            if (a.getKanji().equals(PREFIX) && !b.getKanji().equals(PREFIX)) return -1;
+                            if (!a.getKanji().equals(PREFIX) && b.getKanji().equals(PREFIX)) return 1;
                             return 0;
 
 
                     } else if (isKana(constraint.toString())) {
                         //Search in kana fields
-                        if (a.getKana().contains(PREFIX) && b.getKana().contains(PREFIX)) return a.getKana().compareTo(b.getKana());
-                        if (a.getKana().contains(PREFIX) && !b.getKana().contains(PREFIX)) return -1;
-                        if (!a.getKana().contains(PREFIX) && b.getKana().contains(PREFIX)) return 1;
+                        if (a.getKana().equals(PREFIX) && b.getKana().equals(PREFIX)) return a.getKana().compareTo(b.getKana());
+                        if (a.getKana().equals(PREFIX) && !b.getKana().equals(PREFIX)) return -1;
+                        if (!a.getKana().equals(PREFIX) && b.getKana().equals(PREFIX)) return 1;
                         return 0;
                     }
 
                     else{
                         //Search in english fields
-                        if (a.getEnglish().contains(PREFIX) && b.getEnglish().contains(PREFIX)) return a.getEnglish().compareTo(b.getEnglish());
-                        if (a.getEnglish().contains(PREFIX) && !b.getEnglish().contains(PREFIX)) return -1;
-                        if (!a.getEnglish().contains(PREFIX) && b.getEnglish().contains(PREFIX)) return 1;
+                        if (a.getEnglish().equals(PREFIX) && b.getEnglish().equals(PREFIX)) return a.getEnglish().compareTo(b.getEnglish());
+                        if (a.getEnglish().equals(PREFIX) && !b.getEnglish().equals(PREFIX)) return -1;
+                        if (!a.getEnglish().equals(PREFIX) && b.getEnglish().equals(PREFIX)) return 1;
                         return 0;
                     }
 //                    if (a.contains(PREFIX) && b.contains(PREFIX)) return a.compareTo(b);

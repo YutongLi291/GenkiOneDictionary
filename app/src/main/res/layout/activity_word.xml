@@ -7,7 +7,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:paddingTop="30dp"
+        android:textSize="30dp"
         android:paddingBottom="20dp"
         android:textAlignment="center"
         android:id="@+id/kana_view"/>
@@ -16,26 +17,26 @@
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
         android:textAlignment="center"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:id="@+id/kanji_view"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
         android:textAlignment="center"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:id="@+id/romaji_view"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:textAlignment="center"
         android:id="@+id/english_view"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:paddingBottom="20dp"
         android:textAlignment="center"
         android:id="@+id/wordtype_view"/>

@@ -56,6 +56,10 @@ protected void onCreate(Bundle savedInstanceState) {
                     JSONArray words = response.getJSONArray("words");
                     JSONObject current = words.getJSONObject(position);
                     kanaTextView.setText(current.getString("kana"));
+                    kanjiTextView.setText(current.getString("kanji"));
+                    romajiTextView.setText(current.getString("romaji"));
+                    englishTextView.setText(current.getString("english"));
+                    wordTypeTextView.setText(current.getString("wordType"));
                 } catch (JSONException e) {
                     Log.e("yrl", "words parsing problem!",e);
                 }

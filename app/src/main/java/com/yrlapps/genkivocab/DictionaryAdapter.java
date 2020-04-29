@@ -120,11 +120,13 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
     public void onBindViewHolder(@NonNull DictionaryViewHolder holder, int position) {
 
         Word current = filtered.get(position);
-        String text = current.getEnglish() + ": " + current.getKana();
+        String engText = current.getEnglish();
+        String japnText = current.getKana();
         if (!current.getKanji().equals("")){
-            text += " ("+ current.getKanji()+ ") ";
+            japnText += " ("+ current.getKanji()+ ") ";
         }
-        holder.engTextView.setText(text);
+        holder.engTextView.setText(engText);
+        holder.japnTextView.setText(japnText);
         holder.containerView.setTag(current);
 
     }

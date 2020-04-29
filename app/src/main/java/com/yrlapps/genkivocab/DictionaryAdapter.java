@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.mariten.kanatools.KanaConverter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -33,20 +34,22 @@ import java.util.List;
 
 public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.DictionaryViewHolder> implements Filterable {
 
-
+    public static final String url = "https://raw.githubusercontent.com/YutongLi291/GenkiOneDictionary/master/genki_dictionary.json";
     public List<Word> words =new ArrayList<>();
     public RequestQueue requestQueue;
     public List<Word> filtered = new ArrayList<>();
 
     public static class DictionaryViewHolder extends RecyclerView.ViewHolder{
         public LinearLayout containerView;
-        public TextView textView;
+        public TextView engTextView;
+        public TextView japnTextView;
 
         public DictionaryViewHolder(@NonNull View view) {
             super(view);
 
         containerView = view.findViewById(R.id.dictionary_row);
-        textView = view.findViewById(R.id.dictionary_row_textView);
+        engTextView = view.findViewById(R.id.dictionary_row_engView);
+        japnTextView = view.findViewById(R.id.dictionary_row_japnView);
 
 
         containerView.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +76,7 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
     }
 
     public void loadWords() {
-        String url = "https://raw.githubusercontent.com/YutongLi291/GenkiOneDictionary/master/genki_dictionary.json";
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -121,7 +124,7 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
         if (!current.getKanji().equals("")){
             text += " ("+ current.getKanji()+ ") ";
         }
-        holder.textView.setText(text);
+        holder.engTextView.setText(text);
         holder.containerView.setTag(current);
 
     }
@@ -153,7 +156,8 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
 
                     } else if (isKana(constraint.toString())) {
                         //Search in kana fields
-                        if (word.getKana().contains(constraint.toString())) {
+                        if (KanaConverter.convertKana(word.getKana(),KanaConverter.OP_ZEN_KATA_TO_ZEN_HIRA
+                        ).contains(KanaConverter.convertKana(constraint.toString(),KanaConverter.OP_ZEN_KATA_TO_ZEN_HIRA))) {
                             filteredWords.add(word);
                         }
                     }

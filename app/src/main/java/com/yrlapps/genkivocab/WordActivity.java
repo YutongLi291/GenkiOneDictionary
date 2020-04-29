@@ -5,6 +5,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 class WordActivity extends AppCompatActivity {
 
     private TextView kanaTextView;
@@ -13,7 +16,8 @@ class WordActivity extends AppCompatActivity {
     private TextView englishTextView;
     private TextView wordTypeTextView;
     private int position;
-
+    private RequestQueue requestQueue;
+    String url;
     @Override
 protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,13 @@ protected void onCreate(Bundle savedInstanceState) {
         romajiTextView = findViewById(R.id.romaji_view);
         englishTextView = findViewById(R.id.english_view);
         wordTypeTextView = findViewById(R.id.wordtype_view);
+        url =DictionaryAdapter.url;
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
+        position =getIntent().getIntExtra("position",0);
+        load();
+    }
+
+    public void load() {
 
     }
 

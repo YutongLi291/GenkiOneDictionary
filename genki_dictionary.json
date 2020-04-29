@@ -936,7 +936,7 @@
         "kanji": "遅くなる",
         "romaji": "osokunaru",
         "english": "to be late",
-        "wordType": ""
+        "wordType": "u verb"
     },
     {
         "kana": "おだいじに",
@@ -1328,7 +1328,7 @@
         "kanji": "帰る",
         "romaji": "kaeru",
         "english": "to go back; to return",
-        "wordType": ""
+        "wordType": "u verb"
     },
     {
         "kana": "かお",
@@ -1356,7 +1356,7 @@
         "kanji": "",
         "romaji": "kakaru",
         "english": "to take (amount of time / money)",
-        "wordType": ""
+        "wordType": "u verb"
     },
     {
         "kana": "かきとめ",
@@ -1398,7 +1398,7 @@
         "kanji": "",
         "romaji": "kakeru (megane o)",
         "english": "to put on (glasses)",
-        "wordType": ""
+        "wordType": "ru verb"
     },
     {
         "kana": "かさ",
@@ -3400,7 +3400,7 @@
         "kanji": "心配する",
         "romaji": "shinpaisuru",
         "english": "to worry",
-        "wordType": ""
+        "wordType": "irregular verb"
     },
     {
         "kana": "しんぶん",
@@ -3904,7 +3904,7 @@
         "kanji": "食べる",
         "romaji": "taberu",
         "english": "to eat",
-        "wordType": ""
+        "wordType": "ru verb"
     },
     {
         "kana": "だれ",
@@ -3960,7 +3960,7 @@
         "kanji": "遅刻する",
         "romaji": "chikokusuru",
         "english": "to be late (for an appointment)",
-        "wordType": ""
+        "wordType": "irregular verb"
     },
     {
         "kana": "ちち",
@@ -4086,7 +4086,7 @@
         "kanji": "勤める",
         "romaji": "tsumeru",
         "english": "to work for",
-        "wordType": ""
+        "wordType": "ru verb"
     },
     {
         "kana": "つまらない",
@@ -4345,7 +4345,7 @@
         "kanji": "電話する",
         "romaji": "denwasuru",
         "english": "to call",
-        "wordType": ""
+        "wordType": "irregular verb"
     },
     {
         "kana": "でんわをかける",
@@ -5080,7 +5080,7 @@
         "kanji": "入る",
         "romaji": "hairu",
         "english": "to enter",
-        "wordType": ""
+        "wordType": "u verb"
     },
     {
         "kana": "はがき",
@@ -5647,7 +5647,7 @@
         "kanji": "太る",
         "romaji": "futoru",
         "english": "to gain weight",
-        "wordType": ""
+        "wordType": "u verb"
     },
     {
         "kana": "ふなびん",
@@ -5955,7 +5955,7 @@
         "kanji": "曲がる",
         "romaji": "magaru",
         "english": "to run (right / left)",
-        "wordType": ""
+        "wordType": "u verb"
     },
     {
         "kana": "まじめ（な）",
@@ -6423,7 +6423,7 @@
         "kana": "やせる",
         "kanji": "",
         "romaji": "yaseru",
-        "english": "to love weight",
+        "english": "to lose weight",
         "wordType": "ru verb"
     },
     {
@@ -6816,7 +6816,7 @@
         "kanji": "渡る",
         "romaji": "wataru",
         "english": "to cross",
-        "wordType": ""
+        "wordType": "u verb"
     },
     {
         "kana": "わるい",

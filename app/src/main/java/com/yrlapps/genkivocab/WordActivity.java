@@ -23,7 +23,7 @@ protected void onCreate(Bundle savedInstanceState) {
         romajiTextView = findViewById(R.id.romaji_view);
         englishTextView = findViewById(R.id.english_view);
         wordTypeTextView = findViewById(R.id.wordtype_view);
-        
+
     }
 
 }

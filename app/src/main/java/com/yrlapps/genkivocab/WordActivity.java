@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class WordActivity extends AppCompatActivity {
+public class WordActivity extends AppCompatActivity {
 
     private TextView kanaTextView;
     private TextView kanjiTextView;
@@ -55,7 +55,7 @@ protected void onCreate(Bundle savedInstanceState) {
                 try {
                     JSONArray words = response.getJSONArray("words");
                     JSONObject current = words.getJSONObject(position);
-                    //
+                    kanaTextView.setText(current.getString("kana"));
                 } catch (JSONException e) {
                     Log.e("yrl", "words parsing problem!",e);
                 }
@@ -66,6 +66,7 @@ protected void onCreate(Bundle savedInstanceState) {
                 Log.e("yrl", "words details error!");
             }
         });
+        requestQueue.add(request);
     }
 
 }

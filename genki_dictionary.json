@@ -45,7 +45,7 @@
     {
         "kana": "あかるい",
         "kanji": "明るい",
-        "romaji": "akrui",
+        "romaji": "akarui",
         "english": "cheerful",
         "wordType": ""
     },
@@ -53,7 +53,7 @@
         "kana": "あき",
         "kanji": "秋",
         "romaji": "aki",
-        "english": "fall",
+        "english": "fall; autumn",
         "wordType": ""
     },
     {
@@ -79,7 +79,8 @@
     },
     {
         "kana": "あっさて",
-        "kanji": "",
+        "kanji": "明後日
+        .",
         "romaji": "assate",
         "english": "the day after tomorrow",
         "wordType": ""
@@ -415,7 +416,7 @@
     },
     {
         "kana": "いす",
-        "kanji": "",
+        "kanji": "椅子",
         "romaji": "isu",
         "english": "chair",
         "wordType": ""
@@ -625,7 +626,7 @@
     },
     {
         "kana": "いる",
-        "kanji": "",
+        "kanji": "要る",
         "romaji": "iru",
         "english": "to need",
         "wordType": "u verb"
@@ -639,7 +640,7 @@
     },
     {
         "kana": "いろいろ（な）",
-        "kanji": "",
+        "kanji": "色々(な)",
         "romaji": "iroiro (na)",
         "english": "various",
         "wordType": ""
@@ -674,7 +675,7 @@
     },
     {
         "kana": "うそをつく",
-        "kanji": "",
+        "kanji": "噓をつく",
         "romaji": "usowotsuku",
         "english": "to tell a lie",
         "wordType": "u verb"
@@ -821,7 +822,7 @@
     },
     {
         "kana": "おかあさん",
-        "kanji": "亜母さん",
+        "kanji": "お母さん",
         "romaji": "okaasan",
         "english": "mother",
         "wordType": ""
@@ -1438,7 +1439,7 @@
     {
         "kana": "かぜをひく",
         "kanji": "風邪をひく",
-        "romaji": "kaze o hiku",
+        "romaji": "kaze wo hiku",
         "english": "to catch a cold",
         "wordType": ""
     },

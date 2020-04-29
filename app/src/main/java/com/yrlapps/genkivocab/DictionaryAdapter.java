@@ -27,6 +27,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.DictionaryViewHolder> implements Filterable {
@@ -71,7 +73,7 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
     }
 
     public void loadWords() {
-        String url = "https://raw.githubusercontent.com/drjonesy/learngenki/master/database/genki_dictionary.json";
+        String url = "https://raw.githubusercontent.com/YutongLi291/GenkiOneDictionary/master/genki_dictionary.json";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -84,8 +86,9 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
                         String kanji = result.getString("kanji");
                         String romaji = result.getString("romaji");
                         String english = result.getString("english");
+                        String wordType = result.getString("wordType");
 
-                        words.add(new Word(kana, kanji, romaji, english, i));
+                        words.add(new Word(kana, kanji, romaji, english, wordType, i));
 
                     }
                     notifyDataSetChanged(); // Notifies that the data has changed
@@ -114,7 +117,11 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
     public void onBindViewHolder(@NonNull DictionaryViewHolder holder, int position) {
 
         Word current = filtered.get(position);
-        holder.textView.setText(current.getEnglish() + ": " + current.getKana());
+        String text = current.getEnglish() + ": " + current.getKana();
+        if (current.getKanji()!=null){
+            text += " ("+ current.getKanji()+ ") ";
+        }
+        holder.textView.setText(text);
         holder.containerView.setTag(current);
 
     }
@@ -129,14 +136,14 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
 
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
+        protected FilterResults performFiltering(final CharSequence constraint) {
            List<Word> filteredWords= new ArrayList<>();
             FilterResults results =new FilterResults();
-            if (constraint.length() == 0){
-                results.values = words;
-                results.count = words.size();
-            }
-            else{
+//            if (constraint.length() == 0){
+//                results.values = words;
+//                results.count = words.size();
+//            }
+//            else{
                 for(Word word: words) {
                     if (isKanji(constraint.toString())) {
                         //Search in kanji fields
@@ -153,12 +160,46 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Di
 
                     else{
                         //Search in english fields
-                        if (word.getEnglish().contains(constraint.toString())){
+                        if (word.getEnglish().toLowerCase().contains(constraint.toString().toLowerCase())){
                             filteredWords.add(word);
                         }
                     }
                 }
-            }
+            Collections.sort(filteredWords, new Comparator<Word>() {
+                 String PREFIX = constraint.toString();
+                @Override
+                public int compare(Word a, Word b) {
+                    if (isKanji(constraint.toString())) {
+                        //Search in kanji fields
+
+                            if (a.getKanji().contains(PREFIX) && b.getKanji().contains(PREFIX)) return a.getKanji().compareTo(b.getKanji());
+                            if (a.getKanji().contains(PREFIX) && !b.getKanji().contains(PREFIX)) return -1;
+                            if (!a.getKanji().contains(PREFIX) && b.getKanji().contains(PREFIX)) return 1;
+                            return 0;
+
+
+                    } else if (isKana(constraint.toString())) {
+                        //Search in kana fields
+                        if (a.getKana().contains(PREFIX) && b.getKana().contains(PREFIX)) return a.getKana().compareTo(b.getKana());
+                        if (a.getKana().contains(PREFIX) && !b.getKana().contains(PREFIX)) return -1;
+                        if (!a.getKana().contains(PREFIX) && b.getKana().contains(PREFIX)) return 1;
+                        return 0;
+                    }
+
+                    else{
+                        //Search in english fields
+                        if (a.getEnglish().contains(PREFIX) && b.getEnglish().contains(PREFIX)) return a.getEnglish().compareTo(b.getEnglish());
+                        if (a.getEnglish().contains(PREFIX) && !b.getEnglish().contains(PREFIX)) return -1;
+                        if (!a.getEnglish().contains(PREFIX) && b.getEnglish().contains(PREFIX)) return 1;
+                        return 0;
+                    }
+//                    if (a.contains(PREFIX) && b.contains(PREFIX)) return a.compareTo(b);
+//                    if (a.contains(PREFIX) && !b.contains(PREFIX)) return -1;
+//                    if (!a.contains(PREFIX) && b.contains(PREFIX)) return 1;
+//                    return 0;
+                }
+            });
+//            }
             results.values =filteredWords;
             results.count = filteredWords.size();
             return results;
